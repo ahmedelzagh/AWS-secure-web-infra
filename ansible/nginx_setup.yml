@@ -1,0 +1,31 @@
+- hosts: all
+  become: yes  # Use sudo to install packages
+  tasks:
+    - name: Update package manager cache
+      apt:  # Use 'yum' for RHEL/CentOS
+        update_cache: yes
+      when: ansible_os_family == "Debian"  # For Debian-based systems
+
+    - name: Update package manager cache (RHEL/CentOS)
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_os_family == "RedHat"  # For RHEL/CentOS systems
+
+    - name: Install Nginx
+      apt:  # Use 'yum' for RHEL/CentOS
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Nginx (RHEL/CentOS)
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes

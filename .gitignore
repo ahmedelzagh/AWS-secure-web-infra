@@ -1,0 +1,26 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan
+terraform/.*
+.terraform/
+
+# Ansible files
+*.retry
+*.log
+*.pyc
+__pycache__/
+inventory/*.ini
+inventory/*.yaml
+
+# MacOS system files
+.DS_Store
+
+# Visual Studio Code files
+.vscode/
+
+# Sensitive files
+secrets.yml
+vault.yml
+.env
