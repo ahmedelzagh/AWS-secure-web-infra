@@ -54,4 +54,3 @@ variable "allowed_ip" {
   description = "The IP address allowed to SSH into the bastion host"
   default     = "YOUR_IP/32"  # Replace this with your actual IP
 }
-
